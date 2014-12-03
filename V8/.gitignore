@@ -1,0 +1,9 @@
+*.vcxproj
+*.vcxproj.*
+Debug
+Debug32
+Debug64
+Release
+Release32
+Release64
+*.sln

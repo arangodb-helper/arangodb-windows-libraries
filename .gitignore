@@ -1,0 +1,23 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.pyc
+
+# Build directories
+Build32
+Build64
+out
+3rdParty-Windows
+
+# emacs backup
+*~

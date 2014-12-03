@@ -1,0 +1,31 @@
+echo "================================================================================"
+echo "  configuring ICU"
+echo "================================================================================"
+
+cd "icu-$ICU_VERSION/source"
+
+P1="--prefix=`pwd`/../../../out/$VS_VERSION-icu-$BUILD_BITS"
+P2="--libdir=`pwd`/../../../out/$VS_VERSION-icu-$BUILD_BITS/lib"
+P3="--enable-static"
+P4="--disable-shared"
+P5="--enable-debug"
+P6="--disable-release"
+
+echo "--------------------------------------------------------------------------------"
+echo "Build: Release for $BUILD_BITS"
+echo "--------------------------------------------------------------------------------"
+echo
+
+./runConfigureICU Cygwin/MSVC-MT $P1 $P2/Release $P3 $P4
+make clean
+make -j 8
+make install
+
+echo "--------------------------------------------------------------------------------"
+echo "Build: Debug for $BUILD_BITS"
+echo "--------------------------------------------------------------------------------"
+echo
+./runConfigureICU $P5 $P6 Cygwin/MSVC-MT $P1 $P2/Debug $P3 $P4
+make clean
+make -j 8
+make install

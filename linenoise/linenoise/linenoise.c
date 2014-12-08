@@ -184,6 +184,10 @@ struct current {
     /*initial coordinates for displaying the buffer*/
     int ix;     
     int iy;     
+    INPUT_RECORD events[256];
+    int eventsLeft;
+    int currentEvent;
+
 #endif
 };
 
@@ -860,18 +864,28 @@ static void setCursorPos(struct current *current, int x)
 static int fd_read(struct current *current)
 {
     while (1) {
-        INPUT_RECORD irec;
+        INPUT_RECORD* ir;
         DWORD n;
-        if (WaitForSingleObject(current->inh, INFINITE) != WAIT_OBJECT_0) {
+
+        if (current->eventsLeft == 0) {
+          if (WaitForSingleObject(current->inh, INFINITE) != WAIT_OBJECT_0) {
             break;
-        }
-        if (!ReadConsoleInput (current->inh, &irec, 1, &n)) {
+          }
+
+          current->currentEvent = 0;
+          if (!ReadConsoleInput(current->inh, &current->events, 256, &n)) {
             break;
+          }
+          current->eventsLeft = n;
         }
-        if (irec.EventType == KEY_EVENT && irec.Event.KeyEvent.bKeyDown) {
-            KEY_EVENT_RECORD *k = &irec.Event.KeyEvent;
+
+        ir = &current->events[current->currentEvent++];
+        --current->eventsLeft;
+
+        if (ir->EventType == KEY_EVENT && ir->Event.KeyEvent.bKeyDown) {
+            KEY_EVENT_RECORD *k = &ir->Event.KeyEvent;
             if (k->dwControlKeyState & ENHANCED_KEY) {
-                switch (k->wVirtualKeyCode) {
+               switch (k->wVirtualKeyCode) {
                  case VK_LEFT:
                     return SPECIAL_LEFT;
                  case VK_RIGHT:
@@ -1534,12 +1548,11 @@ static size_t linenoiseEdit(struct current *current) {
     while(1) {
         int dir = -1;
         int c = fd_read(current);
-
 #ifndef NO_COMPLETION
         /* Only autocomplete when the callback is set. It returns < 0 when
          * there was an error reading from fd. Otherwise it will return the
          * character that should be handled next. */
-        if (c == '\t' && current->pos == current->chars && completionCallback != NULL) {
+        if (c == '\t' && current->eventsLeft == 0 && current->pos == current->chars && completionCallback != NULL) {
             c = completeLine(current);
             initLinenoiseLine(current);
             /* Return on errors */
@@ -1879,9 +1892,15 @@ char *linenoise(const char *prompt)
         current.pos = 0;
         initPrompt(&current, prompt);
         current.capture = NULL;
+        current.eventsLeft = 0;
+        current.currentEvent = 0;
 
         initLinenoiseLine(&current);
         count = linenoiseEdit(&current);
+            
+        eraseEol(&current);
+        current.pos = current.chars;
+        refreshLine(current.prompt, &current);
 
         disableRawMode(&current);
         printf("\n");

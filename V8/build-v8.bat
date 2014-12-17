@@ -61,7 +61,7 @@ call %VISUAL_STUDIO_VC%\vcvarsall.bat x86
 
 set CMD=-G msvs_version=2013
 set CMD=%CMD% -Dtarget_arch=ia32
-set CMD=%CMD% -Dcomponent=static
+set CMD=%CMD% -Dcomponent=static_library
 set CMD=%CMD% -Dmode=release
 set CMD=%CMD% -Dlibrary=static_library
 set CMD=%CMD% -Dmsvcrt=static

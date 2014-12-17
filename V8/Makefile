@@ -16,6 +16,6 @@ install_bits:
 	mkdir ../out/vs2013-V8-$(BITS)/lib/Release
 	mkdir ../out/vs2013-V8-$(BITS)/lib/Debug
 
-	cp -a V8-3.16.14/build/Debug$(BITS)/lib/*.lib ../out/vs2013-V8-$(BITS)/lib/Debug
-	cp -a V8-3.16.14/build/Release$(BITS)/lib/*.lib ../out/vs2013-V8-$(BITS)/lib/Release
-	cp -a V8-3.16.14/include/* ../out/vs2013-V8-$(BITS)/include
+	cp -a V8-3.29.59/build/Debug$(BITS)/lib/*.lib ../out/vs2013-V8-$(BITS)/lib/Debug
+	cp -a V8-3.29.59/build/Release$(BITS)/lib/*.lib ../out/vs2013-V8-$(BITS)/lib/Release
+	cp -a V8-3.29.59/include/* ../out/vs2013-V8-$(BITS)/include

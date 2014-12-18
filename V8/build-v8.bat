@@ -11,7 +11,7 @@ SET VS_VERSION=vs2013
 SET VISUAL_STUDIO_VC="C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC"
 
 :: Set this to the version of ICU you are building
-SET V8_VERSION=3.29.59
+SET V8_VERSION=3.16.14
 
 :: ========================================================================================================
 :: ==== <BUILD> 64bit
@@ -21,7 +21,7 @@ call %VISUAL_STUDIO_VC%\vcvarsall.bat x86_amd64
 
 set CMD=-G msvs_version=2013
 set CMD=%CMD% -Dtarget_arch=x64
-set CMD=%CMD% -Dcomponent=static_library
+set CMD=%CMD% -Dcomponent=static
 set CMD=%CMD% -Dmode=release
 set CMD=%CMD% -Dlibrary=static_library
 set CMD=%CMD% -Dmsvcrt=static
@@ -66,7 +66,7 @@ set CMD=%CMD% -Dmode=release
 set CMD=%CMD% -Dlibrary=static_library
 set CMD=%CMD% -Dmsvcrt=static
 set CMD=%CMD% -Dsnapshot=no
-set CMD=%CMD% -Dwerror=no
+
 echo %CMD%
 
 cd V8-%V8_VERSION%

@@ -1,3 +1,5 @@
+.PHONY: all install 3rdParty 3rdParty_bits 3rdParty_project
+
 all:
 	cd getopt && make all
 	cd libev && make all

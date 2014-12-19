@@ -32,9 +32,9 @@ set SUFFIX=%4
 cd build
 
 rmdir /S /Q Debug
-rmdir /S /Q Debug%SUFFIX
+rmdir /S /Q Debug%SUFFIX%
 
 rmdir /S /Q Release
-rmdir /S /Q Release%SUFFIX
+rmdir /S /Q Release%SUFFIX%
 
 exit

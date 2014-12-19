@@ -50,7 +50,7 @@ msbuild All.sln /t:v8 /p:Configuration=Debug /p:Platform=%PLATFORM%
 ren Debug Debug%SUFFIX%
 
 msbuild All.sln /t:v8 /p:Configuration=Release /p:Platform=%PLATFORM%
-ren Release Release%SIFFIX%
+ren Release Release%SUFFIX%
 
 cd ..
 cd ..

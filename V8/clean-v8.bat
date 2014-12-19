@@ -24,35 +24,17 @@ set MSPLATFORM=%3
 
 :: 64 or 32
 set SUFFIX=%4
+
 :: ========================================================================================================
-:: ==== <BUILD> 
+:: ==== <CLEAN>
 :: ========================================================================================================
-
-call %VISUAL_STUDIO_VC%\vcvarsall.bat %ARCHITECTURE
-
-set CMD=-G msvs_version=2013
-set CMD=%CMD% -Dtarget_arch=%PLATFORM
-set CMD=%CMD% -Dcomponent=static_library
-set CMD=%CMD% -Dmode=release
-set CMD=%CMD% -Dlibrary=static_library
-set CMD=%CMD% -Dmsvcrt=static
-set CMD=%CMD% -Dsnapshot=no
-
-echo %CMD%
-
-cd V8-%V8_VERSION%
-
-third_party\python_26\python build\gyp_v8 %CMD%
 
 cd build
 
-msbuild All.sln /t:v8 /p:Configuration=Debug /p:Platform=%PLATFORM
-ren Debug Debug%SUFFIX
+rmdir /S /Q Debug
+rmdir /S /Q Debug%SUFFIX
 
-msbuild All.sln /t:v8 /p:Configuration=Release /p:Platform=%PLATFORM
-ren Release Release64
-
-cd ..
-cd ..
+rmdir /S /Q Release
+rmdir /S /Q Release%SUFFIX
 
 exit

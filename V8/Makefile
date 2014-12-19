@@ -1,7 +1,30 @@
 .PHONY: all install
 
-all:
-	cmd < build-v8.bat
+all: build64 clean64 build32
+
+
+build64:
+	cmd x86_amd64 x64 x64 64 < build-v8.bat
+
+build32:
+	cmd x86 ia32 Win32 32 < build-v8.bat
+
+
+clean64:
+	cmd x86_amd64 x64 x64 64 < clean-v8.bat 
+
+clean32:
+	cmd x86 ia32 Win32 32 < clean-v8.bat 
+
+clean: clean32 clean64
+
+
+distclean64:
+	cmd x86_amd64 x64 x64 64 < clean-v8.bat 
+
+distclean32:
+	cmd x86 ia32 Win32 32 < clean-v8.bat 
+
 
 install:
 	$(MAKE) install_bits BITS=32
@@ -24,5 +47,5 @@ install_bits:
 	cp -a V8-3.29.59/third_party/icu/source/i18n/unicode ../out/vs2013-icu-$(BITS)/include/
 	cp -a V8-3.29.59/third_party/icu/source/i18n/examples/layout/*.h ../out/vs2013-V8-$(BITS)/include/layout/
 
-	# for bits in 32 64; do for file in sicudt sicuin sicuio sicule siculx sicutest sicutu sicuuc; do cp  ../out/vs2013-icu-$${bits}/lib/Debug/$${file}d.lib ../out/vs2013-icu-$${bits}/lib/Debug/$${file}.lib; done; done
+# for bits in 32 64; do for file in sicudt sicuin sicuio sicule siculx sicutest sicutu sicuuc; do cp  ../out/vs2013-icu-$${bits}/lib/Debug/$${file}d.lib ../out/vs2013-icu-$${bits}/lib/Debug/$${file}.lib; done; done
 

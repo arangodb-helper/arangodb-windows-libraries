@@ -3,7 +3,6 @@ all:
 	cd libev && make all
 	cd linenoise && make all
 	cd regex && make all
-	cd icu && make all
 	cd openssl && make all
 	cd v8 && make all
 	cd zlib && make all
@@ -13,7 +12,6 @@ install:
 	cd libev && make install
 	cd linenoise && make install
 	cd regex && make install
-	cd icu && make install
 	cd openssl && make install
 	cd v8 && make install
 	cd zlib && make install

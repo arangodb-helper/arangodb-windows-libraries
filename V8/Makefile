@@ -4,7 +4,7 @@ all: build64 clean64 build32
 
 
 build64:
-	cmd x86_amd64 x64 x64 64 < build-v8.bat
+	./build-v8.bat x86_amd64 x64 x64 64 
 
 build32:
 	cmd x86 ia32 Win32 32 < build-v8.bat
@@ -44,8 +44,8 @@ install_bits:
 	cp -a V8-3.29.59/build/Release$(BITS)/lib/*.lib ../out/vs2013-V8-$(BITS)/lib/Release
 	cp -a V8-3.29.59/include/* ../out/vs2013-V8-$(BITS)/include
 
-	cp -a V8-3.29.59/third_party/icu/source/i18n/unicode ../out/vs2013-icu-$(BITS)/include/
-	cp -a V8-3.29.59/third_party/icu/source/i18n/examples/layout/*.h ../out/vs2013-V8-$(BITS)/include/layout/
+	cp -a V8-3.29.59/third_party/icu/source/common/unicode ../out/vs2013-icu-$(BITS)/include/
+	#cp -a V8-3.29.59/third_party/icu/source/i18n/examples/layout/*.h ../out/vs2013-V8-$(BITS)/include/layout/
 
 # for bits in 32 64; do for file in sicudt sicuin sicuio sicule siculx sicutest sicutu sicuuc; do cp  ../out/vs2013-icu-$${bits}/lib/Debug/$${file}d.lib ../out/vs2013-icu-$${bits}/lib/Debug/$${file}.lib; done; done
 

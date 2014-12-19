@@ -35,14 +35,17 @@ install:
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=libev
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=linenoise
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=regex
-	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=icu
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=openssl
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=V8
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=zlib
 
 	cp -a etcd/$(BITS)/bin/*.exe 3rdParty-Windows/$(BITS)/bin
+	$(MAKE) 3rdParty_project_header BITS=$(BITS) PROJECT=icu
 
 3rdParty_project:
-	cp -a out/vs2013-$(PROJECT)-$(BITS)/include/* 3rdParty-Windows/$(BITS)/include
-	cp -a out/vs2013-$(PROJECT)-$(BITS)/lib/Debug/*.lib 3rdParty-Windows/$(BITS)/lib/Debug
-	cp -a out/vs2013-$(PROJECT)-$(BITS)/lib/Release/*.lib 3rdParty-Windows/$(BITS)/lib/Release
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* 3rdParty-Windows/$(BITS)/include
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Debug/*.lib 3rdParty-Windows/$(BITS)/lib/Debug
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Release/*.lib 3rdParty-Windows/$(BITS)/lib/Release
+
+3rdParty_project_header:
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* 3rdParty-Windows/$(BITS)/include

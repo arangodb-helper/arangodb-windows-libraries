@@ -7,23 +7,23 @@ build64:
 	./build-v8.bat x86_amd64 x64 x64 64 
 
 build32:
-	cmd x86 ia32 Win32 32 < build-v8.bat
+	build-v8.bat x86 ia32 Win32 32
 
 
 clean64:
-	cmd x86_amd64 x64 x64 64 < clean-v8.bat 
+	clean-v8.bat cmd x86_amd64 x64 x64 64
 
 clean32:
-	cmd x86 ia32 Win32 32 < clean-v8.bat 
+	clean-v8.bat x86 ia32 Win32 32
 
 clean: clean32 clean64
 
 
 distclean64:
-	cmd x86_amd64 x64 x64 64 < clean-v8.bat 
+	distclean-v8.bat x86_amd64 x64 x64 64
 
 distclean32:
-	cmd x86 ia32 Win32 32 < clean-v8.bat 
+	distclean-v8.bat x86 ia32 Win32 32
 
 
 install:

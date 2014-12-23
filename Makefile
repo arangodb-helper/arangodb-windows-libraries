@@ -4,7 +4,6 @@ all:
 	cd linenoise && make all
 	cd regex && make all
 	cd openssl && make all
-	cd v8 && make all
 	cd zlib && make all
 
 install:
@@ -13,7 +12,6 @@ install:
 	cd linenoise && make install
 	cd regex && make install
 	cd openssl && make install
-	cd v8 && make install
 	cd zlib && make install
 
 3rdParty:
@@ -36,7 +34,6 @@ install:
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=linenoise
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=regex
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=openssl
-	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=V8
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=zlib
 
 	cp -a etcd/$(BITS)/bin/*.exe 3rdParty-Windows/$(BITS)/bin

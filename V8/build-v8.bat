@@ -19,7 +19,7 @@ set ARCHITECTURE=%1
 ::x64 or ia32
 set PLATFORM=%2
 
-:: x64 or 32
+:: x64 or Win32
 set MSPLATFORM=%3
 
 :: 64 or 32
@@ -46,10 +46,10 @@ third_party\python_26\python build\gyp_v8 %CMD%
 
 cd build
 
-msbuild All.sln /t:v8 /p:Configuration=Debug /p:Platform=%PLATFORM%
+msbuild All.sln /t:v8 /p:Configuration=Debug /p:Platform=%MSPLATFORM%
 ren Debug Debug%SUFFIX%
 
-msbuild All.sln /t:v8 /p:Configuration=Release /p:Platform=%PLATFORM%
+msbuild All.sln /t:v8 /p:Configuration=Release /p:Platform=%MSPLATFORM%
 ren Release Release%SUFFIX%
 
 cd ..

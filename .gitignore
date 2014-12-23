@@ -17,7 +17,7 @@
 Build32
 Build64
 out
-3rdParty-Windows
+WindowsLibraries
 
 # emacs backup
 *~

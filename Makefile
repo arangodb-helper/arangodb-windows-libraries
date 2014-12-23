@@ -15,19 +15,19 @@ install:
 	cd zlib && make install
 
 3rdParty:
-	rm -rf 3rdParty-Windows
-	mkdir 3rdParty-Windows
+	rm -rf WindowsLibraries
+	mkdir WindowsLibraries
 
 	$(MAKE) 3rdParty_bits BITS=32
 	$(MAKE) 3rdParty_bits BITS=64
 
 3rdParty_bits:
-	mkdir 3rdParty-Windows/$(BITS)
-	mkdir 3rdParty-Windows/$(BITS)/bin
-	mkdir 3rdParty-Windows/$(BITS)/include
-	mkdir 3rdParty-Windows/$(BITS)/lib
-	mkdir 3rdParty-Windows/$(BITS)/lib/Debug
-	mkdir 3rdParty-Windows/$(BITS)/lib/Release
+	mkdir WindowsLibraries/$(BITS)
+	mkdir WindowsLibraries/$(BITS)/bin
+	mkdir WindowsLibraries/$(BITS)/include
+	mkdir WindowsLibraries/$(BITS)/lib
+	mkdir WindowsLibraries/$(BITS)/lib/Debug
+	mkdir WindowsLibraries/$(BITS)/lib/Release
 
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=getopt
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=libev
@@ -36,13 +36,13 @@ install:
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=openssl
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=zlib
 
-	cp -a etcd/$(BITS)/bin/*.exe 3rdParty-Windows/$(BITS)/bin
+	cp -a etcd/$(BITS)/bin/*.exe WindowsLibraries/$(BITS)/bin
 	$(MAKE) 3rdParty_project_header BITS=$(BITS) PROJECT=icu
 
 3rdParty_project:
-	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* 3rdParty-Windows/$(BITS)/include
-	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Debug/*.lib 3rdParty-Windows/$(BITS)/lib/Debug
-	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Release/*.lib 3rdParty-Windows/$(BITS)/lib/Release
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* WindowsLibraries/$(BITS)/include
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Debug/*.lib WindowsLibraries/$(BITS)/lib/Debug
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Release/*.lib WindowsLibraries/$(BITS)/lib/Release
 
 3rdParty_project_header:
-	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* 3rdParty-Windows/$(BITS)/include
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* WindowsLibraries/$(BITS)/include

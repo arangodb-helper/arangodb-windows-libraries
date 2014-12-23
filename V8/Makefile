@@ -4,7 +4,7 @@ all: build64 clean64 build32
 
 
 build64:
-	./build-v8.bat x86_amd64 x64 x64 64 
+	./build-v8-test.bat x86_amd64 x64 x64 64 
 
 build32:
 	build-v8.bat x86 ia32 Win32 32

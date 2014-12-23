@@ -35,8 +35,8 @@ set CMD=%CMD% -Dtarget_arch=%PLATFORM%
 set CMD=%CMD% -Dcomponent=static_library
 set CMD=%CMD% -Dmode=release
 set CMD=%CMD% -Dlibrary=static_library
-set CMD=%CMD% -Dmsvcrt=static
-set CMD=%CMD% -Dsnapshot=no
+set CMD=%CMD% -Dv8_use_snapshot=false
+set CMD=%CMD% -Dwerror=
 
 echo %CMD%
 

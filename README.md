@@ -7,4 +7,4 @@ make
 make install
 make 3rdParty
 
-to generate the 3rdParty-Windows directory required for ArangoDB.
+to generate the WindowsLibraries directory required for ArangoDB.

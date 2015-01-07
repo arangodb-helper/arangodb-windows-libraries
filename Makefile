@@ -37,12 +37,8 @@ install:
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=zlib
 
 	cp -a etcd/$(BITS)/bin/*.exe WindowsLibraries/$(BITS)/bin
-	$(MAKE) 3rdParty_project_header BITS=$(BITS) PROJECT=icu
 
 3rdParty_project:
 	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* WindowsLibraries/$(BITS)/include
 	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Debug/*.lib WindowsLibraries/$(BITS)/lib/Debug
 	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Release/*.lib WindowsLibraries/$(BITS)/lib/Release
-
-3rdParty_project_header:
-	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* WindowsLibraries/$(BITS)/include

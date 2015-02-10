@@ -1,9 +1,3 @@
-checkcmake:
-	if test -z "`cmake --help |grep -i visual`"; then \
-		echo "Your cmake is not sufficient; it lacks support for visual studio." ;\
-		exit 1; \
-	fi
-
 all: checkcmake
 	cd getopt && make all
 	cd libev && make all
@@ -11,6 +5,13 @@ all: checkcmake
 	cd regex && make all
 	cd openssl && make all
 	cd zlib && make all
+
+checkcmake:
+	if test -z "`cmake --help |grep -i visual`"; then \
+		echo "Your cmake is not sufficient; it lacks support for visual studio." ; \
+		exit 1; \
+	fi
+
 
 install:
 	cd getopt && make install

@@ -256,6 +256,9 @@ int _my_getopt_internal(int argc, char * argv[], const char *shortopts,
         if(my_opterr) fprintf(stderr,
                            "%s: unrecognized option `%s'\n",
                            argv[0], argv[my_optind++]);
+		else {
+			my_optind++;
+		}
       }
     } else {
       opt = '?';

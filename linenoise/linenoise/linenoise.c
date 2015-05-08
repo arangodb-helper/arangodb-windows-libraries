@@ -1865,11 +1865,15 @@ int linenoiseColumns(void)
     disableRawMode (&current);
     return current.cols;
 }
+
+// this restricts usage to a single linenoise instance per program
+static struct current current;
+static char buf[LINENOISE_MAX_LINE];
+static int initialized = 0;
+
 char *linenoise(const char *prompt)
 {
     size_t count;
-    struct current current;
-    char buf[LINENOISE_MAX_LINE];
 
     if (enableRawMode(&current) == -1) {
         printf("%s", prompt);
@@ -1885,15 +1889,23 @@ char *linenoise(const char *prompt)
     }
     else
     {
-        current.buf = buf;
-        current.bufmax = sizeof(buf);
-        current.len = 0;
-        current.chars = 0;
-        current.pos = 0;
+        if (initialized == 0) {
+          current.buf = buf;
+          current.bufmax = sizeof(buf);
+          current.len = 0;
+          current.chars = 0;
+          current.pos = 0;
+          current.eventsLeft = 0;
+          current.currentEvent = 0;
+          initialized = 1;
+        }
+        else {
+          current.len = 0;
+          current.chars = 0;
+          current.pos = 0;
+        }
         initPrompt(&current, prompt);
         current.capture = NULL;
-        current.eventsLeft = 0;
-        current.currentEvent = 0;
 
         initLinenoiseLine(&current);
         count = linenoiseEdit(&current);

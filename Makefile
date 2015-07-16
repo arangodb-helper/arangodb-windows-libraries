@@ -34,7 +34,7 @@ install:
 	mkdir WindowsLibraries/$(BITS)/include
 	mkdir WindowsLibraries/$(BITS)/lib
 	mkdir WindowsLibraries/$(BITS)/lib/Debug
-	mkdir WindowsLibraries/$(BITS)/lib/Release
+	mkdir WindowsLibraries/$(BITS)/lib/RelWithDebInfo
 
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=getopt
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=libev
@@ -48,4 +48,10 @@ install:
 3rdParty_project:
 	cp -af out/vs2013-$(PROJECT)-$(BITS)/include/* WindowsLibraries/$(BITS)/include
 	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Debug/*.lib WindowsLibraries/$(BITS)/lib/Debug
-	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/Release/*.lib WindowsLibraries/$(BITS)/lib/Release
+	cp -af out/vs2013-$(PROJECT)-$(BITS)/lib/RelWithDebInfo/*.lib WindowsLibraries/$(BITS)/lib/RelWithDebInfo
+	for i in out/vs2013-$(PROJECT)-$(BITS)/lib/RelWithDebInfo/*pdb; do \
+		if test  -f "$$i" ; then \
+	  		cp -af $$i WindowsLibraries/$(BITS)/lib/RelWithDebInfo; \
+		fi; \
+	done
+

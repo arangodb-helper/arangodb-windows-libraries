@@ -14,5 +14,5 @@ install_bits:
 	mkdir ../out/vs2013-openssl-$(BITS)/lib
 
 	cp -a openssl-1.0.2-$(BITS)/lib/Debug ../out/vs2013-openssl-$(BITS)/lib
-	cp -a openssl-1.0.2-$(BITS)/lib/Release ../out/vs2013-openssl-$(BITS)/lib
+	cp -a openssl-1.0.2-$(BITS)/lib/Release ../out/vs2013-openssl-$(BITS)/lib/RelWithDebInfo
 	cp -a openssl-1.0.2-$(BITS)/include/* ../out/vs2013-openssl-$(BITS)/include

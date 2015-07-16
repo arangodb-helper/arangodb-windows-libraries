@@ -13,6 +13,6 @@ install_bits:
 	mkdir ../out/vs2013-zlib-$(BITS)/include
 	mkdir ../out/vs2013-zlib-$(BITS)/lib
 
-	cp -a zlib-1.2.7-$(BITS)/lib/Release ../out/vs2013-zlib-$(BITS)/lib
+	cp -a zlib-1.2.7-$(BITS)/lib/Release ../out/vs2013-zlib-$(BITS)/lib/RelWithDebInfo
 	cp -a zlib-1.2.7-$(BITS)/lib/Debug ../out/vs2013-zlib-$(BITS)/lib
 	cp -a zlib-1.2.7-$(BITS)/include/* ../out/vs2013-zlib-$(BITS)/include

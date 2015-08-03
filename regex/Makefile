@@ -11,7 +11,7 @@ all_bits:
 	rm -rf Build$(BITS)
 	mkdir Build$(BITS)
 
-	$(MAKE) all_config CONFIG=Release BITS=$(BITS) TARGET="$(TARGET)"
+	$(MAKE) all_config CONFIG=RelWithDebInfo BITS=$(BITS) TARGET="$(TARGET)"
 	$(MAKE) all_config CONFIG=Debug BITS=$(BITS) TARGET="$(TARGET)"
 
 all_config:
@@ -34,7 +34,7 @@ install_bits:
 	mkdir "$(OUT)$(BITS)/lib"
 	mkdir "$(OUT)$(BITS)/include"
 
-	cp -a Build$(BITS)/Release "$(OUT)$(BITS)/lib"
+	cp -a Build$(BITS)/RelWithDebInfo "$(OUT)$(BITS)/lib"
 	cp -a Build$(BITS)/Debug "$(OUT)$(BITS)/lib"
 
 	cp regex.h "$(OUT)$(BITS)/include"

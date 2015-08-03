@@ -1556,14 +1556,18 @@ static size_t linenoiseEdit(struct current *current) {
             c = completeLine(current);
             initLinenoiseLine(current);
             /* Return on errors */
-            if (c < 0) return current->len;
+            if (c == -1) {
+              return current->len;
+            }
             /* Read next character when 0 */
             if (c == 0) continue;
         }
 #endif
 
 process_char:
-        if (c == -1) return current->len;
+        if (c == -1) {
+          return current->len;
+        }
 #ifdef USE_TERMIOS
         if (c == 27) {   /* escape sequence */
             c = check_special(current->fd);
@@ -1854,6 +1858,7 @@ history_navigation:
             break;
         }
     }
+
     return current->len;
 }
 

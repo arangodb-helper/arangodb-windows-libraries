@@ -1,12 +1,12 @@
 TARGET=Visual Studio 12
 VS=vs2013
 all: checkcmake
-	cd getopt && make all TARGET=$(TARGET) VS=$(VS)
-	cd libev && make all TARGET=$(TARGET) VS=$(VS)
-	cd linenoise && make all TARGET=$(TARGET) VS=$(VS)
-	cd regex && make all TARGET=$(TARGET) VS=$(VS)
-	cd openssl && make all TARGET=$(TARGET) VS=$(VS)
-	cd zlib && make all TARGET=$(TARGET) VS=$(VS)
+	cd getopt && make all TARGET="$(TARGET)" VS=$(VS)
+	cd libev && make all TARGET="$(TARGET)" VS=$(VS)
+	cd linenoise && make all TARGET="$(TARGET)" VS=$(VS)
+	cd regex && make all TARGET="$(TARGET)" VS=$(VS)
+	cd openssl && make all TARGET="$(TARGET)" VS=$(VS)
+	cd zlib && make all TARGET="$(TARGET)" VS=$(VS)
 
 checkcmake:
 	if test -z "`cmake --help |grep -i visual`"; then \
@@ -16,19 +16,19 @@ checkcmake:
 
 
 install:
-	cd getopt && make install TARGET=$(TARGET) VS=$(VS)
-	cd libev && make install TARGET=$(TARGET) VS=$(VS)
-	cd linenoise && make install TARGET=$(TARGET) VS=$(VS)
-	cd regex && make install TARGET=$(TARGET) VS=$(VS)
-	cd openssl && make install TARGET=$(TARGET) VS=$(VS)
-	cd zlib && make install TARGET=$(TARGET) VS=$(VS)
+	cd getopt && make install TARGET="$(TARGET)" VS=$(VS)
+	cd libev && make install TARGET="$(TARGET)" VS=$(VS)
+	cd linenoise && make install TARGET="$(TARGET)" VS=$(VS)
+	cd regex && make install TARGET="$(TARGET)" VS=$(VS)
+	cd openssl && make install TARGET="$(TARGET)" VS=$(VS)
+	cd zlib && make install TARGET="$(TARGET)" VS=$(VS)
 
 3rdParty:
 	rm -rf WindowsLibraries
 	mkdir WindowsLibraries
 
-	$(MAKE) 3rdParty_bits BITS=32 TARGET=$(TARGET) VS=$(VS)
-	$(MAKE) 3rdParty_bits BITS=64 TARGET=$(TARGET) VS=$(VS)
+	$(MAKE) 3rdParty_bits BITS=32 TARGET="$(TARGET)" VS=$(VS)
+	$(MAKE) 3rdParty_bits BITS=64 TARGET="$(TARGET)" VS=$(VS)
 
 3rdParty_bits:
 	mkdir WindowsLibraries/$(BITS)

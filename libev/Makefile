@@ -1,5 +1,4 @@
-TARGET=Visual Studio 12
-OUT=../out/vs2013-libev-
+OUT=../out/$(VS)-libev-
 VERSION=libev-4.11
 
 .PHONY: all all_bits all_config install install_bits clean

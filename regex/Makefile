@@ -1,5 +1,4 @@
-TARGET=Visual Studio 12
-OUT=../out/vs2013-regex-
+OUT=../out/$(VS)-regex-
 
 .PHONY: all all_bits all_config install install_bits clean
 

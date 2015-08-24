@@ -7,12 +7,12 @@ install:
 	$(MAKE) install_bits BITS=64
 
 install_bits:
-	rm -rf ../out/vs2013-zlib-$(BITS)
+	rm -rf ../out/$(VS)-zlib-$(BITS)
 
-	mkdir ../out/vs2013-zlib-$(BITS)
-	mkdir ../out/vs2013-zlib-$(BITS)/include
-	mkdir ../out/vs2013-zlib-$(BITS)/lib
+	mkdir ../out/$(VS)-zlib-$(BITS)
+	mkdir ../out/$(VS)-zlib-$(BITS)/include
+	mkdir ../out/$(VS)-zlib-$(BITS)/lib
 
-	cp -a zlib-1.2.7-$(BITS)/lib/Release ../out/vs2013-zlib-$(BITS)/lib/RelWithDebInfo
-	cp -a zlib-1.2.7-$(BITS)/lib/Debug ../out/vs2013-zlib-$(BITS)/lib
-	cp -a zlib-1.2.7-$(BITS)/include/* ../out/vs2013-zlib-$(BITS)/include
+	cp -a zlib-1.2.7-$(BITS)/lib/Release ../out/$(VS)-zlib-$(BITS)/lib/RelWithDebInfo
+	cp -a zlib-1.2.7-$(BITS)/lib/Debug ../out/$(VS)-zlib-$(BITS)/lib
+	cp -a zlib-1.2.7-$(BITS)/include/* ../out/$(VS)-zlib-$(BITS)/include

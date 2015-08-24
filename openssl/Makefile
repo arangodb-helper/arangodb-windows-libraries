@@ -7,12 +7,12 @@ install:
 	$(MAKE) install_bits BITS=64
 
 install_bits:
-	rm -rf ../out/vs2013-openssl-$(BITS)
+	rm -rf ../out/$(VS)-openssl-$(BITS)
 
-	mkdir ../out/vs2013-openssl-$(BITS)
-	mkdir ../out/vs2013-openssl-$(BITS)/include
-	mkdir ../out/vs2013-openssl-$(BITS)/lib
+	mkdir ../out/$(VS)-openssl-$(BITS)
+	mkdir ../out/$(VS)-openssl-$(BITS)/include
+	mkdir ../out/$(VS)-openssl-$(BITS)/lib
 
-	cp -a openssl-1.0.2-$(BITS)/lib/Debug ../out/vs2013-openssl-$(BITS)/lib
-	cp -a openssl-1.0.2-$(BITS)/lib/Release ../out/vs2013-openssl-$(BITS)/lib/RelWithDebInfo
-	cp -a openssl-1.0.2-$(BITS)/include/* ../out/vs2013-openssl-$(BITS)/include
+	cp -a openssl-1.0.2-$(BITS)/lib/Debug ../out/$(VS)-openssl-$(BITS)/lib
+	cp -a openssl-1.0.2-$(BITS)/lib/Release ../out/$(VS)-openssl-$(BITS)/lib/RelWithDebInfo
+	cp -a openssl-1.0.2-$(BITS)/include/* ../out/$(VS)-openssl-$(BITS)/include

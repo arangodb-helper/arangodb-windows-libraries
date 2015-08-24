@@ -35,7 +35,7 @@ install_bits:
 	mkdir "$(OUT)$(BITS)/include"
 
 	cp -a Build$(BITS)/RelWithDebInfo "$(OUT)$(BITS)/lib"
-	cp -a Build$(BITS)/ev.dir/RelWithDebInfo/vc120.pdb "$(OUT)$(BITS)/lib/RelWithDebInfo/ev.pdb"
+	cp -a Build$(BITS)/ev.dir/RelWithDebInfo/*.pdb "$(OUT)$(BITS)/lib/RelWithDebInfo/ev.pdb"
 	cp -a Build$(BITS)/Debug "$(OUT)$(BITS)/lib"
 
 	cp "$(VERSION)/ev.h" "$(OUT)$(BITS)/include"

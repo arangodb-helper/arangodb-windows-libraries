@@ -34,7 +34,7 @@ install_bits:
 	mkdir "$(OUT)$(BITS)/include"
 
 	cp -a Build$(BITS)/RelWithDebInfo "$(OUT)$(BITS)/lib"
-	cp -a Build$(BITS)/getopt.dir/RelWithDebInfo/vc120.pdb "$(OUT)$(BITS)/lib/RelWithDebInfo/getopt.pdb"
+	cp -a Build$(BITS)/getopt.dir/RelWithDebInfo/*.pdb "$(OUT)$(BITS)/lib/RelWithDebInfo/getopt.pdb"
 	cp -a Build$(BITS)/Debug "$(OUT)$(BITS)/lib"
 
 	cp *.h "$(OUT)$(BITS)/include"

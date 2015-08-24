@@ -34,7 +34,7 @@ install_bits:
 	mkdir "$(OUT)$(BITS)/include"
 
 	cp -a Build$(BITS)/RelWithDebInfo "$(OUT)$(BITS)/lib"
-	cp -a Build$(BITS)/linenoise.dir/RelWithDebInfo/vc120.pdb "$(OUT)$(BITS)/lib/RelWithDebInfo/linenoise.pdb"
+	cp -a Build$(BITS)/linenoise.dir/RelWithDebInfo/*.pdb "$(OUT)$(BITS)/lib/RelWithDebInfo/linenoise.pdb"
 	cp -a Build$(BITS)/Debug "$(OUT)$(BITS)/lib"
 
 	cp linenoise/linenoise.h "$(OUT)$(BITS)/include"

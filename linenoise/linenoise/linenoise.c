@@ -102,28 +102,6 @@
  * This support based in part on work by Jon Griffiths.
  */
 
-#ifdef _WIN32 /* Windows platform, either MinGW or Visual Studio (MSVC) */
-#include <windows.h>
-#include <fcntl.h>
-#define USE_WINCONSOLE
-#ifdef __MINGW32__
-#define HAVE_UNISTD_H
-#else
-/* Microsoft headers don't like old POSIX names */
-#define strdup _strdup
-#define snprintf _snprintf
-#endif
-#else
-#include <termios.h>
-#include <sys/ioctl.h>
-#include <sys/poll.h>
-#define USE_TERMIOS
-#define HAVE_UNISTD_H
-#endif
-
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -133,6 +111,31 @@
 #include <sys/types.h>
 #include <limits.h>
 #include <math.h>
+
+#ifdef _WIN32 /* Windows platform, either MinGW or Visual Studio (MSVC) */
+  #include <windows.h>
+  #include <fcntl.h>
+  #define USE_WINCONSOLE
+  #ifdef __MINGW32__
+    #define HAVE_UNISTD_H
+  #else
+    /* Microsoft headers don't like old POSIX names */
+    #define strdup _strdup
+      #ifndef snprintf
+        #define snprintf _snprintf
+      #endif
+    #endif
+#else
+  #include <termios.h>
+  #include <sys/ioctl.h>
+  #include <sys/poll.h>
+  #define USE_TERMIOS
+  #define HAVE_UNISTD_H
+#endif
+
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
 #include "linenoise.h"
 #include "utf8.h"

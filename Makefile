@@ -3,7 +3,6 @@ VS=vs2013
 all: checkcmake
 	cd getopt && make all TARGET="$(TARGET)" VS=$(VS)
 	cd libev && make all TARGET="$(TARGET)" VS=$(VS)
-	cd linenoise && make all TARGET="$(TARGET)" VS=$(VS)
 	cd regex && make all TARGET="$(TARGET)" VS=$(VS)
 	cd openssl && make all TARGET="$(TARGET)" VS=$(VS)
 	cd zlib && make all TARGET="$(TARGET)" VS=$(VS)
@@ -18,7 +17,6 @@ checkcmake:
 install:
 	cd getopt && make install TARGET="$(TARGET)" VS=$(VS)
 	cd libev && make install TARGET="$(TARGET)" VS=$(VS)
-	cd linenoise && make install TARGET="$(TARGET)" VS=$(VS)
 	cd regex && make install TARGET="$(TARGET)" VS=$(VS)
 	cd openssl && make install TARGET="$(TARGET)" VS=$(VS)
 	cd zlib && make install TARGET="$(TARGET)" VS=$(VS)
@@ -40,7 +38,6 @@ install:
 
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=getopt
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=libev
-	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=linenoise
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=regex
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=openssl
 	$(MAKE) 3rdParty_project BITS=$(BITS) PROJECT=zlib
